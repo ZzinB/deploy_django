@@ -17,7 +17,7 @@ RUN uv sync
 COPY . /app
 
 # static 파일 수집 (필요 시)
-RUN python manage.py collectstatic --noinput
+RUN .venv/bin/python manage.py collectstatic --noinput
 
 # uv를 통해 gunicorn으로 Django 실행 (uv 지원함)
 CMD ["uv", "run", "gunicorn", "app.config.wsgi:application", "--bind", "0.0.0.0:8000"]
